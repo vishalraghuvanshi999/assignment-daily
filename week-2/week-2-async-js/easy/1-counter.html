@@ -1,0 +1,116 @@
+<!-- // ## Create a counter in JavaScript
+
+// We have already covered this in the second lesson, but as an easy recap try to code a counter in Javascript
+// It should go up as time goes by in intervals of 1 second -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+  body {
+    font-family: "Segoe UI", Roboto, sans-serif;
+    background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+
+  .container {
+    background: white;
+    padding: 30px 40px;
+    border-radius: 16px;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    width: 300px;
+  }
+
+  #display {
+    font-size: 4rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  button {
+    background: #6c63ff;
+    border: none;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 10px;
+    margin: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.2s ease;
+  }
+
+  button:hover {
+    background: #5851d6;
+  }
+
+  button:active {
+    transform: scale(0.97);
+  }
+
+  button.stop {
+    background: #ff6b6b;
+  }
+
+  button.stop:hover {
+    background: #e65a5a;
+  }
+
+  button.reset {
+    background: #4ecdc4;
+  }
+
+  button.reset:hover {
+    background: #3bb7af;
+  }
+</style>
+<body>
+   
+    <div id="display">0</div>
+    <button id="start">start</button>
+    <button id="reset">reset</button>
+    <button id="stop">stop</button>
+
+
+    <script>
+    let counter = 0;
+    let interval = null; // it store the id that return by settmeout
+
+    // start -->in this interval not like variable it id
+    document.getElementById("start").onclick = function(){
+        if(interval === null){
+            interval = setInterval(()=>{
+                    counter++;
+                    document.getElementById("display").textContent = counter;
+        },1000);
+        }
+    };
+    // stop
+    document.getElementById("stop").onclick = function(){
+        clearInterval(interval);
+        interval = null;
+    };
+
+    // reset
+    document.getElementById("reset").onclick = function(){
+         clearInterval(interval);
+        interval = null;
+        counter=0;
+        document.getElementById("display").textContent = counter;
+
+    };
+    
+</script>
+
+    
+</body>
+</html>
